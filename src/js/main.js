@@ -1,10 +1,12 @@
-var myApp = angular.module('myApp', []);
+/*(function(){
+*/var myApp = angular.module('myApp', []);
 
 var sampleControler = function($scope){
 	$scope.message = "Hello Anand";
 };
 
-var getHttpNgServices = function($scope,$http, $interval){
+// you now can use githubService service instead of using $http service 
+var getHttpNgServices = function($scope, $interval,githubService){
 	
 	$scope.searchText = 'angular';
 
@@ -17,14 +19,14 @@ var getHttpNgServices = function($scope,$http, $interval){
 		$scope.repos = response.data;
 	};
 
-	var onUserComplete = function(response){
+	var onUserComplete = function(data){
 		
-		$http.get(response.data.repos_url)
+		githubService.getRepo(data.repos_url)
 			.then(getUserDetails ,onErr);
 	};
 
 	$scope.search = function(searchText){
-		$http.get('https://api.github.com/users/'+searchText).
+		githubService.getUser(searchText).
 		//observe that we are simply providing name of Fns expressions
 		then(onUserComplete,onErr);	
 	};	
@@ -32,7 +34,6 @@ var getHttpNgServices = function($scope,$http, $interval){
 	//this can be a seprate module in itself
 		// this function needs to be more genric 
 	$scope.counter = 5;
-
 
 	var decrementCount = function(){
 		$scope.counter--;
@@ -46,10 +47,9 @@ var getHttpNgServices = function($scope,$http, $interval){
 		$interval(decrementCount,1000,$scope.counter);
 	})();
 
-
-
 };
 
 
 myApp.controller('sampleControler',sampleControler);
-myApp.controller('getHttpNgServices',getHttpNgServices);
+//maintain the array module dependency for the custom services to work
+myApp.controller('getHttpNgServices',["$scope", "$interval","githubService",getHttpNgServices]);
