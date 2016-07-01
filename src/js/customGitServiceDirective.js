@@ -12,7 +12,7 @@ var githubService = function($http){
 		});	
 	};
 	var getRepo = function(user){
-		return $http.get(user).then(function(response){
+		return $http.get(user.repos_url).then(function(response){
 			return response;
 		},function(error){
 			return error;

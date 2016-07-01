@@ -1,0 +1,11 @@
+<div ng-controller="mainCtrl">
+	<h2>{{message}}</h2>
+	{{countdown}}
+	<!-- this section for  search can become template later -->
+	<section>
+		<form ng-submit="search(searchText)">
+		    <input type="search" required placeholder="search here" ng-model="searchText"/>
+		    <input type="submit" value="Search"/>
+		</form>
+	</section>
+</div>

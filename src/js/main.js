@@ -1,55 +1,47 @@
-/*(function(){
-*/var myApp = angular.module('myApp', []);
+(function(){
+ var myApp = angular.module('myApp');
 
-var sampleControler = function($scope){
-	$scope.message = "Hello Anand";
-};
 
-// you now can use githubService service instead of using $http service 
-var getHttpNgServices = function($scope, $interval,githubService){
-	
-	$scope.searchText = 'angular';
+// you now can use mainCtrl service instead of using $http service 
+var mainCtrl = function($scope, $interval,$location){
 
-	// this function needs to be more genric 
-	var onErr = function(error){
-		console.log('error occured '+error);
+	var countInterval = null;
+	var startCounter = function(){
+		//here is the nice 3rd param counter which stops interval
+		countInterval = $interval(decrementCount,1000,$scope.counter);
 	};
-
-	var getUserDetails = function(response){
-		$scope.repos = response.data;
-	};
-
-	var onUserComplete = function(data){
-		
-		githubService.getRepo(data.repos_url)
-			.then(getUserDetails ,onErr);
-	};
-
-	$scope.search = function(searchText){
-		githubService.getUser(searchText).
-		//observe that we are simply providing name of Fns expressions
-		then(onUserComplete,onErr);	
-	};	
 
 	//this can be a seprate module in itself
 		// this function needs to be more genric 
-	$scope.counter = 5;
 
 	var decrementCount = function(){
-		$scope.counter--;
+		$scope.counter -= 1;
 		if($scope.counter < 1){
 			$scope.search($scope.searchText);	
 		}
 	};
 
-	(function startCounter(){
-		//here is the nice 3rd param counter which stops interval
-		$interval(decrementCount,1000,$scope.counter);
-	})();
 
-};
+	$scope.search = function(searchText){
+	//	mainCtrl.getUser(searchText).
+		//observe that we are simply providing name of Fns expressions
+		//then(onUserComplete,onErr);	
+		if(countInterval){
+			$interval.cancel(countInterval);
+			$scope.counter = 0;
+		}
+		$location.path('/user/'+searchText);
+	};	
+	
+	$scope.searchText = "angular";
+	$scope.message = "GitHub Viewer";
+	$scope.counter = 5;
+	startCounter();
 
+	};
 
-myApp.controller('sampleControler',sampleControler);
 //maintain the array module dependency for the custom services to work
-myApp.controller('getHttpNgServices',["$scope", "$interval","githubService",getHttpNgServices]);
+/*myApp.controller('getHttpNgServices',["$scope", "$interval","$location",getHttpNgServices]);*/
+	myApp.controller('mainCtrl',mainCtrl);
+	
+})();

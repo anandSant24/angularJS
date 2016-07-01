@@ -1,0 +1,21 @@
+
+	<section ng-controller="mainCtrl">
+		<div>{{username}}</div>
+		<div>{{counter}}	</div>
+		<table>
+			<thead>
+				<tr>
+		            <th>Name </th>
+		            <th>Stars-count</th>
+		            <th>Language </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="repo in repos">
+				    <td>{{repo.name}} </td>
+			        <td>{{repo.stargazers_count}}</td>
+			        <td>{{repo.language}}</td>
+	        	</tr>
+			</tbody>
+		</table>
+	</section>
