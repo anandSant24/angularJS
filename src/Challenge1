@@ -1,0 +1,24 @@
+1. Navigate to src folder of the Github24 from cmd terminal
+2. $ python -m SimpleHTTPServer
+3. open browser with localhost:8000 port
+
+Challenge:
+
+click on name of repository and drill in details such as who contributed to it
+we need 
+github username
+and repository name
+
+1. provide route: /repo/:username/:reponame
+2. Template : repo.html
+3. Controller: RepoController
+
+
+https://api.github.com/repos/angular(username)/angular.js(reponame)
+(from this display total number of issues from the repositories)
+property name: "open_issues_count"
+
+https://api.github.com/repos/angular/angular.js/contributors
+then make a second call to get contributors (display image using property "avatar_url":https://avatars.githubusercontent.com/u/216296?v=3 )
+
+

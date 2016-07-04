@@ -15,7 +15,7 @@
 		};
 
 		var getUserDetails = function(response){
-			$scope.repos = response.data;
+			$scope.repos = response;
 		};
 
 		$scope.searchText = $routeParams.searchText;
