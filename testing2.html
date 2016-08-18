@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+  <input id="btn1" type="button" value="click">
+<script type="text/javascript">
+// Code goes here
+
+function counter(){
+  var count = 0;
+   return function incrementclickCount(){
+    alert(++count);
+    return count;
+  };
+  //return incrementclickCount;
+}
+var test = function test(){
+  console.log('clicked');
+};
+var ele = document.getElementById('btn1');
+
+var x = counter();
+console.log(x);
+
+ele.addEventListener('click',x);
+
+
+</script>
+</body>
+</html>

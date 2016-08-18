@@ -1,0 +1,7 @@
+Unit Testing with mocha, Chai, Sinon
+mocha 
+  (framework for node & browser to run test serially
+chai 
+  (syntatical sugar or Assertion library) 
+sinon 
+  (standalone test spies, stubs and mocks for JavaScript)

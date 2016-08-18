@@ -1,0 +1,43 @@
+Agenda
+------
+
+	Testing Frameworks
+	Qunit
+	Jasmine
+	Mocha
+
+Mocking
+-------
+
+  Mocking in JavaScript
+  Jasmine Spies
+  Sinon
+
+Testing Utilities
+-----------------
+
+Qunit Testing Framework:
+-----------------------
+	Intro to Qunit
+	Organize Tests
+	Running Tests
+	Integrating with DOM
+	Integrating with CI
+	Asynchronous Tests
+	Qunit tidbits
+
+
+Intro to Qunit
+===============
+	build by jQuery team
+	used to test jqeury features
+	No dependencies
+	Can be used to test server side code
+
+	Setup qunit
+	Organize Tests
+	Running Tests
+	Integrating with DOM
+	Integrating with CI
+	Asynchronous Tests
+	Qunit tidbits
